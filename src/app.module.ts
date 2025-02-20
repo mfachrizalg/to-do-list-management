@@ -6,6 +6,7 @@ import { CommentModule } from './comment/comment.module';
 import { PostModule } from './post/post.module';
 import { TaskModule } from './task/task.module';
 import { ToDoModule } from './to-do/to-do.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ToDoModule } from './to-do/to-do.module';
     PostModule,
     TaskModule,
     ToDoModule,
+    PrismaModule,
   ],
 })
 export class AppModule {}
