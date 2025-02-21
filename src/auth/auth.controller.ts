@@ -7,7 +7,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('login')
-  login(@Body() req: LoginRequest): Promise<string> {
+  login(@Body() req: LoginRequest): Promise<object> {
     return this.authService.login(req);
   }
 

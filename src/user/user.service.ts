@@ -8,7 +8,7 @@ export class UserService {
   constructor(private prisma: PrismaService) {}
   async register(req: RegisterRequest): Promise<string> {
     const hashedPassword: string = await argon.hash(req.password);
-    const { email } = await this.prisma.user.findUniqueOrThrow({
+    const user = await this.prisma.user.findUnique({
       where: {
         email: req.email,
       },
@@ -16,7 +16,7 @@ export class UserService {
         email: true,
       },
     });
-    if (email) throw new BadRequestException('Email already exists!');
+    if (user?.email) throw new BadRequestException('Email already exists!');
     await this.prisma.user.create({
       data: {
         name: req.name,

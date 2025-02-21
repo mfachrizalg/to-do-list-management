@@ -7,9 +7,13 @@ import { PostModule } from './post/post.module';
 import { TaskModule } from './task/task.module';
 import { ToDoModule } from './to-do/to-do.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     AuthModule,
     UserModule,
     LikeModule,
