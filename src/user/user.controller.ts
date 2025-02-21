@@ -1,12 +1,13 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { UserService } from './user.service';
-import { LoginRequest } from '../dto/auth.dto';
+import { RegisterRequest } from '../dto/user.dto';
 
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
 
   @Post('register')
-  register(@Body() req: LoginRequest): string {
+  register(@Body() req: RegisterRequest): Promise<string> {
+    return this.userService.register(req);
   }
 }
